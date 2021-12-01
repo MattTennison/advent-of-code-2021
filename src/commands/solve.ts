@@ -13,5 +13,6 @@ export const solve = async (dayInput: string, inputPath: string) => {
 
   console.group('Results');
   console.log(`First Part: ${solution.firstPart(input)}`);
+  console.log(`Second Part: ${solution.secondPart(input)}`);
   console.groupEnd();
 }
