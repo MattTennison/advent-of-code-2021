@@ -14,22 +14,18 @@ const algorithm = (input: number[]) => {
   return result.measurementsLargerThanPrevious;
 }
 
-const rollingWindow = (windowSize: number) => (n: number, index: number, arr: number[]) => {
+const rollingWindow = (n: number, index: number, arr: number[]) => {
   return n + arr[index + 1] + arr[index + 2];
 }
 
-export const firstPart = (input: string) => {
-  const parsedInput = input
-    .split('\n')
-    .map(numberString => Number.parseInt(numberString));
+const parseInput = (input: string) => input
+  .split('\n')
+  .map(numberString => Number.parseInt(numberString));
 
-  return algorithm(parsedInput);
+export const firstPart = (input: string) => {
+  return algorithm(parseInput(input));
 }
 
-export const secondPart = (input: string) => {
-  const parsedInput = input
-    .split('\n')
-    .map(numberString => Number.parseInt(numberString));
-  
-  return algorithm(parsedInput.map(rollingWindow(3)));
+export const secondPart = (input: string) => {  
+  return algorithm(parseInput(input).map(rollingWindow));
 }
