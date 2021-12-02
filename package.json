@@ -7,7 +7,7 @@
     "start": "ts-node src/index.ts",
     "test": "jest src/",
     "format": "prettier --write .",
-    "format:check": "prettier  --check ."
+    "lint": "prettier  --check ."
   },
   "keywords": [],
   "author": "",
