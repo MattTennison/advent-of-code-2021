@@ -1,22 +1,15 @@
 const algorithm = (input: number[]) => {
-  const result = input.reduce(
-    (acc, currentLine) => {
-      if (currentLine > acc.previousMeasurement) {
-        acc.measurementsLargerThanPrevious++;
-      }
+  let previousValue = Number.MAX_SAFE_INTEGER;
+  let measurementsLargerThanPrevious = 0;
 
-      return {
-        ...acc,
-        previousMeasurement: currentLine,
-      };
-    },
-    {
-      measurementsLargerThanPrevious: 0,
-      previousMeasurement: Number.MAX_SAFE_INTEGER,
+  for (let value of input) {
+    if (value > previousValue) {
+      measurementsLargerThanPrevious++;
     }
-  );
+    previousValue = value;
+  }
 
-  return result.measurementsLargerThanPrevious;
+  return measurementsLargerThanPrevious;
 };
 
 const rollingWindow = (n: number, index: number, arr: number[]) => {
