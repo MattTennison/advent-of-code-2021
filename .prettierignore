@@ -3,3 +3,7 @@ node_modules
 .prettierignore
 fixtures
 inputs
+test/real-inputs
+test/sample-inputs
+test/real-outputs
+test/sample-outputs

@@ -1,0 +1,4 @@
+01.sample = 7
+02.sample = 5
+01.real = 1233
+02.real = 1275
