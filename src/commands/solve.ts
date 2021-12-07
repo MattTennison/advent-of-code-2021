@@ -6,7 +6,7 @@ export const solve = async (dayInput: string, inputPath: string) => {
   const inputBuffer = await readFile(inputPath);
   const input = await inputBuffer.toString();
 
-  const solution = get(day);
+  const solution = await get(day);
   if (solution === undefined) {
     return;
   }

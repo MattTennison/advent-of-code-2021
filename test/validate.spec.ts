@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 import glob from "glob";
 import { z } from "zod";
-import { get } from "../src/solutions/utils/get-solution";
+import { get, Solution } from "../src/solutions/utils/get-solution";
 import { zip } from "lodash";
 import { readFileSync } from "fs";
 
@@ -86,10 +86,21 @@ const expectedOutputFormat = z.object({
 describe.each([...dayInformation.entries()])(
   "Day %s",
   (day: number, fileDetails: Day) => {
-    const solution = get(day);
-    if (!solution) {
-      return;
-    }
+    let solution: Solution;
+
+    beforeAll(async () => {
+      const daysSolution = await get(day);
+      if (!daysSolution) {
+        return;
+      }
+
+      solution = daysSolution;
+    });
+
+    // const solution = get(day);
+    // if (!solution) {
+    //   return;
+    // }
 
     describe.each(
       zip(fileDetails.sampleInputs, fileDetails.sampleOutputs).map(
