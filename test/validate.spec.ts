@@ -89,18 +89,8 @@ describe.each([...dayInformation.entries()])(
     let solution: Solution;
 
     beforeAll(async () => {
-      const daysSolution = await get(day);
-      if (!daysSolution) {
-        return;
-      }
-
-      solution = daysSolution;
+      solution = await get(day);
     });
-
-    // const solution = get(day);
-    // if (!solution) {
-    //   return;
-    // }
 
     describe.each(
       zip(fileDetails.sampleInputs, fileDetails.sampleOutputs).map(
