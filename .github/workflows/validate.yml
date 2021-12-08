@@ -12,4 +12,5 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
-        env: SLOW=1
+        env:
+          SLOW: 1
