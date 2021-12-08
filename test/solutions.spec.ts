@@ -1,6 +1,7 @@
 import { readFile } from "fs/promises";
 import glob from "glob";
 import { get, Solution } from "../src/solutions/utils/get-solution";
+import { slowSolutions } from "./slow-solutions";
 
 const daysAttempted = glob
   .sync("./test/@(real|sample)-@(inputs|outputs)/*.txt")
@@ -15,7 +16,11 @@ const daysAttempted = glob
 const readFileAsString = (fileName: string) =>
   readFile(fileName).then((buf) => buf.toString("utf-8"));
 
-describe.each([...daysAttempted])("Day %i", (day: number) => {
+const daysToTest = [...daysAttempted].filter(
+  (day) => process.env.SLOW || !slowSolutions.includes(day)
+);
+
+describe.each(daysToTest)("Day %i", (day: number) => {
   const dayInTwoDigits = day.toString().padStart(2, "0");
 
   let solution: Solution;
